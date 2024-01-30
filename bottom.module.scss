@@ -1,0 +1,80 @@
+@use "../colors/colors" as *;
+
+.bottom {
+	&__wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	&__img_box {
+		max-width: 100vw;
+		position: relative;
+		overflow: hidden;
+		margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+
+		&:before,
+		&:after {
+			display: block;
+			position: absolute;
+			content: "";
+			height: 100%;
+			width: 400%;
+			transition: 0.4s;
+			z-index: 2;
+			background-image: linear-gradient(
+				-45deg,
+				rgb(114, 145, 173),
+				rgba(255, 255, 255, 0.2),
+				rgb(24, 175, 192)
+			);
+			transform: rotate(45deg);
+			top: 0px;
+			left: -400%;
+			pointer-events: none;
+		}
+
+		&:hover::after {
+			left: 200%;
+		}
+
+		img {
+			display: flex;
+			max-width: 100%;
+			object-fit: cover;
+			cursor: pointer;
+			z-index: 1;
+		}
+	}
+}
+
+@media (min-width: 500px) {
+	.bottom {
+		&__wrapper {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+
+		&__img_box {
+			overflow: hidden;
+			max-width: 40%;
+		}
+	}
+}
+
+@media (min-width: 800px) {
+	.bottom {
+		&__wrapper {
+			display: flex;
+			flex-direction: row;
+		}
+
+		&__img_box {
+			max-width: 23%;
+		}
+	}
+}

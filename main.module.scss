@@ -1,0 +1,124 @@
+@use "../colors/colors" as *;
+
+@keyframes scaling {
+	0% {
+		transform: translate(-50%, -50%) scale(0.9);
+		opacity: 0.7;
+	}
+
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+}
+
+.main {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+
+	min-width: 100%;
+	min-height: 100%;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	z-index: 2;
+
+	background-color: rgba(0, 0, 0, 0.675);
+
+	&__container {
+		position: relative;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		max-width: 1200px;
+
+		height: 100%;
+
+		min-width: 100%;
+	}
+
+	&__contentbtns_box {
+		position: relative;
+
+		max-width: 1200px;
+		max-height: 800px;
+
+		height: 70vh;
+		width: 100%;
+
+		z-index: 3;
+	}
+
+	&__closebtn,
+	&__rightbtn,
+	&__leftbtn,
+	&__numbers {
+		position: absolute;
+		font-size: 2rem;
+		padding: 2rem;
+		cursor: pointer;
+		color: rgb(0, 0, 0);
+		background-color: rgba(255, 255, 255, 0.809);
+	}
+	&__closebtn {
+		right: 0;
+		bottom: 0;
+	}
+	&__leftbtn {
+		bottom: 50%;
+		left: 0;
+		transform: translate(0, 50%);
+	}
+	&__rightbtn {
+		bottom: 50%;
+		right: 0;
+		transform: translate(0, 50%);
+	}
+	&__numbers {
+		background-color: transparent;
+		color: white;
+		text-shadow: 1px 1px 1px black;
+		left: 50%;
+		bottom: 0%;
+		padding: 0rem;
+
+		transform: translate(-50%, 0%);
+	}
+
+	&__content {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		transform: translate(-50%, -50%) scale(0.3);
+
+		max-width: 1200px;
+		width: 100%;
+
+		overflow: hidden;
+
+		&_active {
+			animation-name: scaling;
+			animation-duration: 1.5s;
+
+			animation-fill-mode: forwards;
+		}
+		img {
+			display: flex;
+			max-width: 1200px;
+			width: 100%;
+			height: auto;
+
+			object-fit: cover;
+		}
+	}
+}
